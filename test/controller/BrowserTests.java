@@ -117,7 +117,7 @@ public class BrowserTests extends WithApplication{
 			}
 		});
 	}
-
+	// Raphaels mess
 //	// an unknown User enters eMail and pw, no cookie stored. This account is
 //	// created in db and the user is taken to generalInformation-page
 //	@Test

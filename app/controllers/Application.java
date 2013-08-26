@@ -28,7 +28,8 @@ public class Application extends Controller {
     	  if(filledForm.hasErrors()) {
     	    return badRequest(
 //    	      views.html.index.render(Thesis.all(), filledForm)
-    	      views.html.index.render("Hallo")
+    	    		views.html.thesis.create.render(filledForm)
+//    	      views.html.index.render("Hallo")
     	    );
     	  } else {
     	    Thesis.create(filledForm.get());
@@ -39,7 +40,6 @@ public class Application extends Controller {
     
     @Security.Authenticated(Secured.class)
     public static Result showThesisForm(){
-    	
     	return ok(views.html.thesis.create.render(thesisForm));
     }
     

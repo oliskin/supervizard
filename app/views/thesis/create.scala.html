@@ -16,6 +16,11 @@
   					
   	</script>
     
+    @if(thesisForm.hasGlobalErrors) {
+			<p class="error">
+				@thesisForm.globalError.message
+			</p>
+		}
     
     @form(routes.Application.newThesis()) {
         

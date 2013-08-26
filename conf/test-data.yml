@@ -1,0 +1,14 @@
+
+# Users
+
+- &bob !!models.Supervisor
+    email:      bob@test.de
+    prename:    Bob
+    lastname:   Dillan
+    password:   test
+
+- &jane !!models.Supervisor
+    email:      jane@test.de
+    prename:    Jane
+    lastname:   Fonda
+    password:   secret

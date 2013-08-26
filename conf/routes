@@ -11,7 +11,7 @@ POST     /login                           controllers.Application.authenticate()
 
 
 # Thesis
-GET		/thesisForm					controllers.Application.showThesisForm()
+GET		/thesis					controllers.Application.showThesisForm()
 POST	/thesis						controllers.Application.newThesis()
 
 
