@@ -1,7 +1,7 @@
 package controllers;
 
 import static play.data.Form.form;
-//import models.Supervisor;
+import models.Supervisor;
 import models.Thesis;
 import play.*;
 import play.data.*;
@@ -11,7 +11,8 @@ import views.html.*;
 public class Application extends Controller {
 	
 	static Form<Thesis> thesisForm = Form.form(Thesis.class);
-  
+
+
 	@Security.Authenticated(Secured.class)
     public static Result index() {
         return ok();
@@ -21,6 +22,7 @@ public class Application extends Controller {
     	return ok(login.render(form(Login.class)));
     }
     
+    @Security.Authenticated(Secured.class)
     public static Result newThesis() {
     	Form<Thesis> filledForm = thesisForm.bindFromRequest();
     	  if(filledForm.hasErrors()) {
@@ -35,27 +37,31 @@ public class Application extends Controller {
     	  }
     }
     
+    @Security.Authenticated(Secured.class)
     public static Result showThesisForm(){
     	
     	return ok(views.html.thesis.create.render(thesisForm));
     }
     
-    public static class Login {
-    	
-    	public String email;
-    	public String password;
-    	
-//    	public String validate() {
-//			if (Supervisor.authenticate(email, password) == null) {
-//				return "Invalid user or password";
-//			}
-//			return null;
-//		}
-    	
-    }
-    
-    public static Result authenticate() {
+
+	public static class Login {
+
+		public String email;
+		public String password;
+
+		public String validate() {
+			if (Supervisor.authenticate(email, password) == null) {
+				return "Ungültiger Benutzername oder Passwort.";
+			}
+			return null;
+		}
+
+	}
+
+	public static Result authenticate() {
+
 		Form<Login> loginForm = form(Login.class).bindFromRequest();
+
 		if (loginForm.hasErrors()) {
 			return badRequest(login.render(loginForm));
 		} else {
@@ -64,5 +70,5 @@ public class Application extends Controller {
 			return redirect(routes.Application.index());
 		}
 	}
-  
+
 }

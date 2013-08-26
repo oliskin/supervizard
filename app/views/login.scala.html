@@ -3,17 +3,15 @@
 <html>
     <head>
         <title>SuperVizard</title>
-        <!--<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">-->
-        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
     </head>
     <body>
         <header>
             <a href="@routes.Application.index" id="logo"><span>Super</span>Vizard</a>
         </header>
     @helper.form(routes.Application.authenticate) {
-   <h1>Sign in</h1>
+   <h1 id="LoginText">Bitte loggen Sie sich ein.</h1>
 		@if(form.hasGlobalErrors){
-			<p class="error"> 
+			<p id="errorMessage" class="error"> 
 			@form.globalError.message
 			</p>
 		}
@@ -24,13 +22,13 @@
 			</p>
 		}
    <p>
-       <input type="email" name="email" placeholder="Email" value="@form("email").value">
+       <input id="eMailTextfield" type="email" name="email" placeholder="Email" value="@form("email").value">
    </p>
    <p>
-       <input type="password" name="password" placeholder="Password">
+       <input id="passwordTextfield" type="password" name="password" placeholder="Password">
    </p>
    <p>
-       <button type="submit">Login</button>
+       <button id="LoginButton" type="submit">Login</button>
    </p>
 }
     </body>

@@ -5,13 +5,17 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-GET     /login                      controllers.Application.login()
-GET     /login                      controllers.Application.authenticate()
+#Login
+GET     /login                           controllers.Application.login()
+POST     /login                           controllers.Application.authenticate()
 
 
 # Thesis
 GET		/thesisForm					controllers.Application.showThesisForm()
 POST	/thesis						controllers.Application.newThesis()
+
+
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
