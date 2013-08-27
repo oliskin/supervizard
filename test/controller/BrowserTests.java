@@ -77,13 +77,15 @@ public class BrowserTests extends WithApplication{
 
 				navigateToIndex(browser);
 
-				// eMail-Adresse eintragen, Submit-Button drücken
-				browser.$("#password").text("secret");
-				browser.$("#loginButton").click();
+				// Passwort eintragen, Submit-Button drücken
+				browser.$("#passwordTextfield").text("secret");
+				browser.$("#LoginButton").click();
 
 				// wird die Login-Seite wieder geladen? Mit Fehlermeldung? PW
 				// und eMail-Feld sollen nun leer sein.
 				assertEquals("http://localhost:3333/login", browser.url());
+				assertEquals("Wir finden kein errorMessage-Element",1, browser.$("#errorMessage").size());
+				assertEquals("Wir finden keine Texts in errorMessage",1, browser.$("#errorMessage").getTexts().size());
 				assertEquals("Ungültiger Benutzername oder Passwort.", browser
 						.$("#errorMessage").getTexts().get(0));
 				assertTrue(browser.$("title").getTexts().get(0)
@@ -103,7 +105,7 @@ public class BrowserTests extends WithApplication{
 				navigateToIndex(browser);
 
 				// eMail-Adresse eintragen, Submit-Button drücken
-				browser.$("#loginButton").click();
+				browser.$("#LoginButton").click();
 
 				// wird die Login-Seite wieder geladen? Mit Fehlermeldung? PW
 				// und eMail-Feld sollen nun leer sein.

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 @Entity
@@ -16,6 +17,7 @@ public class Thesis extends Model {
 
 	@Id
 	public Long id;
+	@Required
 	public String type;
 	public Date startDate;
 //	@ManyToOne
@@ -38,6 +40,8 @@ public class Thesis extends Model {
 		this.topic = topic;
 		this.tasks = new ArrayList<Task>();
 	}
+	
+	
 
 	public static Finder<Long, Thesis> find = new Finder<Long, Thesis>(
 			Long.class, Thesis.class);

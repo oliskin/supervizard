@@ -1,35 +1,43 @@
 @(form: Form[Application.Login])
 
-<html>
-    <head>
-        <title>SuperVizard</title>
-    </head>
-    <body>
+@main("SuperVizard"){
         <header>
             <a href="@routes.Application.index" id="logo"><span>Super</span>Vizard</a>
         </header>
-    @helper.form(routes.Application.authenticate) {
-   <h1 id="LoginText">Bitte loggen Sie sich ein.</h1>
-		@if(form.hasGlobalErrors){
-			<p id="errorMessage" class="error"> 
-			@form.globalError.message
-			</p>
-		}
-		
-		@if(flash.contains("success")){
-			<p class="success">
-			@flash.get("success")
-			</p>
-		}
-   <p>
-       <input id="eMailTextfield" type="email" name="email" placeholder="Email" value="@form("email").value">
+        
+        
+   <div class="row">
+   				
+  				<div class="col-lg-5">     
+   <div class="panel panel-primary">
+    	<div class="panel-heading" id="LoginText">Bitte loggen Sie sich ein.</div>
+	    @helper.form(routes.Application.authenticate) {
+			@if(form.hasGlobalErrors){
+				<p id="errorMessage" class="error"> 
+				@form.globalError.message
+				</p>
+			}
+			
+			@if(flash.contains("success")){
+				<p class="success">
+				@flash.get("success")
+				</p>
+			}
+			
+		<p>
+       <input id="eMailTextfield" type="email" name="email" class="form-control" placeholder="E-Mail" value="@form("email").value">
    </p>
    <p>
-       <input id="passwordTextfield" type="password" name="password" placeholder="Password">
+       <input id="passwordTextfield" type="password" name="password" class="form-control" placeholder="Passwort">
    </p>
    <p>
-       <button id="LoginButton" type="submit">Login</button>
+       <button id="LoginButton" type="submit" class="btn btn-primary">Login</button>
    </p>
+    </div>	     
+    
+   </div>
+   </div>
+   
 }
-    </body>
-</html>
+
+}

@@ -2,9 +2,8 @@
 
 @import helper._
 
-@main("Welcome to Play 2.1") {
+@main("Neue Abschlussarbeit anlegen") {
     
-    <h2>Abschlussarbeit erzeugen</h2>
     
     <script>
   			$(document).ready(function(){
@@ -16,26 +15,41 @@
   					
   	</script>
     
+    
+    
+    
+    <h3>Abschlussarbeit erzeugen</h3>
+    
     @if(thesisForm.hasGlobalErrors) {
 			<p class="error">
 				@thesisForm.globalError.message
 			</p>
 		}
     
-    @form(routes.Application.newThesis()) {
+    <div class="panel panel-primary">
+    	<div class="panel-heading">Geben Sie hier die Daten zur Abschlussarbeit ein</div>
+    
+    	@form(routes.Application.newThesis()) {
         
-        Art der Arbeit: 
-        <select name="type">
-  			<option value="Bachelor">Bachelor</option>
-  			<option value="Master">Master</option>
-		</select>
-        
-        @inputDate(thesisForm("startDate"), 'class -> "datepicker")
-        
-        @inputText(thesisForm("topic"))
-        
-        <input type="submit" value="Anlegen">
+        	<div class="row">
+  				<div class="col-lg-4">
+        			@select(thesisForm("type"), options=options(Seq("Bachelor","Master")), '_default -> "Bitte wählen", '_label -> "Art der Arbeit", 'class ->"form-control")
+				</div>
+			</div>
+			<div class="row">
+  				<div class="col-lg-4">
+        			@inputDate(thesisForm("startDate"), 'class -> "datepicker form-control input-small", '_label -> "Startdatum")
+        		</div>
+        	</div>
+        	<div class="row">
+  				<div class="col-lg-4">
+        	@inputText(thesisForm("topic"), 'class -> "form-control", '_label -> "Thema")
+        		</div>
+       		</div>
+        	<input type="submit" value="Anlegen" class="btn btn-primary">
         
     }
+    
+    </div>
     
 }
